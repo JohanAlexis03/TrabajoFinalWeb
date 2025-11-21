@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Form from "./pages/Form";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div style={{ maxWidth: 700, margin: "0 auto", padding: 16 }}>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <h2 style={{ margin: 0 }}>App Tareas - Firestore</h2>
+        <nav>
+          <Link to="/" style={{ marginRight: 12 }}>Lista</Link>
+          <Link to="/form">Crear</Link>
+        </nav>
       </header>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/form/:id" element={<Form />} />
+      </Routes>
     </div>
   );
 }
